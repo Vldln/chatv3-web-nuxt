@@ -3,10 +3,10 @@
 
 <template>
   <main class="container mx-auto sm:px-0">
-    <H1 class="text-center mb-10 mt-16"> {{ $t("pages.about.title") }}</H1>
+    <H1 class="text-center mb-10 mt-16"> {{ $t("pages.deploy.title") }}</H1>
     <div
       class="max-w-[700px] mx-auto content px-3"
-      v-html="$t('pages.about.content')"
+      v-html="$t('pages.deploy.content')"
     ></div>
     <hr class="mt-16" />
   </main>
@@ -15,7 +15,7 @@
 <script>
 export default {
   layout: "default",
-  name: "aboutPage",
+  name: "deployPage",
 };
 </script>
 <style>

@@ -14,16 +14,16 @@
       <img src="/icons/clone.svg" class="mr-3 w-10" alt="" />
       <span class="text-2xl font-bold">{{ $t("alert.title") }}</span>
     </div>
-    <div class="col-span-12 lg:col-span-4">
+    <div class="col-span-12 lg:col-span-6">
       <p class="text-sm">{{ $t("alert.descr") }}</p>
     </div>
-    <div class="col-span-12 lg:col-span-4 flex">
+    <div class="col-span-12 lg:col-span-2 flex">
       <div>
-        <div class="mb-1 text-sm sm:min-w-[90px] min-w-[80px]">
+        <!-- <div class="mb-1 text-sm sm:min-w-[90px] min-w-[80px]">
           {{ $t("alert.buttons.servers") }}
-        </div>
+        </div> -->
 
-        <ButtonGroups>
+        <!-- <ButtonGroups>
           <div
             id="linkMatrix"
             class="
@@ -49,7 +49,7 @@
               <img src="/icons/copy.svg" class="w-4 mr-1 cursor-pointer" alt=""
             /></span>
           </Button>
-        </ButtonGroups>
+        </ButtonGroups> -->
         <Button link="https://github.com/censorship-no/dcomms" class="mt-2">{{
           $t("alert.buttons.repo")
         }}</Button>

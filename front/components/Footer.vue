@@ -9,7 +9,6 @@
           :alt="$t('org')"
         />
       </a>
-      <span class="pt-3 sm:pt-0" v-html="$t('footer.initiative')"> </span>
     </div>
     <div class="my-5 lg:w-[500px] bg-gray-300 h-[1px]"></div>
     <span v-html="$t('footer.license')"></span>

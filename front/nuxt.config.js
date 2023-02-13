@@ -9,49 +9,49 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
-      lang: "ua",
+      lang: "ru",
     },
-    title: "dComms",
-    description: "Децентралізовані комунікації, які працюють з інтернетом або без нього",
+    title: "Chatv3",
+    description: "Мы предлагаем вам заранее установить и потестировать сет из приложений, которые могут работать автономно и вне зависимости от интернет-ограничений.",
     meta: [{
         hid: "og:image:alt",
         property: "og:image:alt",
-        content: `/preview-logo.png`,
+        content: `/snippet.png`,
       },
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: `/preview-logo.png`,
+        content: `/snippet.png`,
       },
       {
         hid: "og:image",
         property: "og:image",
-        content: `/preview-logo.png`,
+        content: `/snippet.png`,
       },
       {
         hid: "vk:image",
         property: "vk:image",
-        content: `/preview-logo.png`,
+        content: `/snippet.png`,
       },
       {
         hid: "og:image:secure_url",
         property: "og:image:secure_url",
-        content: `/preview-logo.png`,
+        content: `/snippet.png`,
       },
       {
         hid: "description",
         name: "description",
-        content: "Децентралізовані комунікації, які працюють з інтернетом або без нього",
+        content: "Мы предлагаем вам заранее установить и потестировать сет из приложений, которые могут работать автономно и вне зависимости от интернет-ограничений.",
       },
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: "dComms",
+        content: "Chatv3",
       },
       {
         hid: "twitter:description",
         name: "twitter:description",
-        content: "Децентралізовані комунікації, які працюють з інтернетом або без нього",
+        content: "Мы предлагаем вам заранее установить и потестировать сет из приложений, которые могут работать автономно и вне зависимости от интернет-ограничений.",
       },
 
       {
@@ -68,22 +68,22 @@ export default {
       {
         hid: "twitter:image:alt",
         name: "twitter:image:alt",
-        content: "dComms",
+        content: "Chatv3",
       },
       {
         hid: "og:title",
         property: "og:title",
-        content: "dComms",
+        content: "Chatv3",
       },
       {
         hid: "og:site_name",
         property: "og:site_name",
-        content: "dComms",
+        content: "Chatv3",
       },
       {
         hid: "og:description",
         property: "og:description",
-        content: "Децентралізовані комунікації, які працюють з інтернетом або без нього",
+        content: "Мы предлагаем вам заранее установить и потестировать сет из приложений, которые могут работать автономно и вне зависимости от интернет-ограничений.",
       },
 
       {
@@ -105,15 +105,15 @@ export default {
     link: [{
       rel: "icon",
       type: "image/x-icon",
-      href: "/favicon-16x16.svg"
+      href: "/favicon.ico"
     }],
   },
 
   modules: ["@nuxtjs/i18n", "@nuxtjs/google-fonts"],
   pwa: {
     manifest: {
-      name: "dComms",
-      short_name: "dComms",
+      name: "Chatv3",
+      short_name: "Chatv3",
       start_url: "/?standalone=true",
       lang: "ua",
       display: "standalone",
@@ -159,35 +159,22 @@ export default {
   i18n: {
     detectBrowserLanguage: false,
     vueI18nLoader: true,
-    defaultLocale: "ua",
+    defaultLocale: "ru",
     vueI18n: {
-      fallbackLocale: ["ua", "en", "ru"],
+      fallbackLocale: ["ru"],
     },
     strategy: "prefix_except_default",
     legacy: false,
     globalInjection: true,
     langDir: "lang/",
     locales: [{
-        code: "ua",
-        name: "UA",
-        nameFull: "Ukranian",
-        iso: "ua-UA",
-        file: "ua.js",
-      },
-      {
         code: "ru",
         name: "RU",
         nameFull: "Русский",
         iso: "ru-RU",
         file: "ru.js",
       },
-      {
-        code: "en",
-        name: "EN",
-        nameFull: "English",
-        iso: "en-US",
-        file: "en.js",
-      },
+
     ],
   },
 

@@ -9,7 +9,7 @@
       <p class="text-xl my-8 text-gray-500 md:mx-[120px]">
         {{ $t("subtitle") }}
       </p>
-      <span
+      <!-- <span
         class="
           border border-green-500
           rounded-lg
@@ -53,7 +53,7 @@
           class="min-w-[109px]"
           >{{ $t(item.name) }}</Button
         >
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
