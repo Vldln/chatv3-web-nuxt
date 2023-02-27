@@ -2,12 +2,9 @@
 
 <template>
   <div class="bg-gray-50 wrapper layers flex flex-col">
-    <Header :data="menu" />
-    {{ menu }}
     <main>
       <Nuxt />
     </main>
-    <Footer />
   </div>
 </template>
 <script>

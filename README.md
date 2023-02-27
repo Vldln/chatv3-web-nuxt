@@ -1,11 +1,11 @@
-# dcomms
+# chatV3
 
 Decentralized communications that work with or without the Internet 
 
 ## Prerequisites
 * A pre-existing [docker swarm](https://docs.docker.com/engine/swarm/) already setup and configured is necessary for orchestration of this software service stack.
 * A domain to use for production.
-* A directory named `/var/www/dcomms` created on the hosts of all docker nodes for the website document root.
+* A directory named `/var/www/chatv3` created on the hosts of all docker nodes for the website document root.
 * A subdomain with the A record pointed to the IP address of a node for automatic issuance of a Let's Encrypt SSL certificate.
 * A subdomain with the MX record pointed to the A record of a node for DeltaChat mail delivery.
 

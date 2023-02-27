@@ -1,15 +1,21 @@
 
 <template>
-  <main class="container px-3 sm:px-0">
-    <Meta :title="page.metaTitle" :description="page.heroText"></Meta>
-
-    <Hero
-      :title="page.title"
-      :heroTitle="page.heroTitle"
-      :heroText="page.heroText"
-    />
-    <SanityContent :blocks="page.sectionItems[0].items" class="md:mx-[120px]" />
-  </main>
+  <div>
+    <Header :data="menu" />
+    <main class="container px-3 sm:px-0">
+      <Meta :title="page.metaTitle" :description="page.heroText"></Meta>
+      <Hero
+        :title="page.title"
+        :heroTitle="page.heroTitle"
+        :heroText="page.heroText"
+      />
+      <SanityContent
+        :blocks="page.sectionItems[0].items"
+        class="md:mx-[120px]"
+      />
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -17,9 +23,12 @@ import { groq } from "@nuxtjs/sanity";
 
 export default {
   async asyncData({ params, $sanity }) {
-    const query = groq`*[_type == "page" && slug.current == "${params.slug}"][0]{..., sectionItems[]->{...}}`;
-    const page = await $sanity.fetch(query);
-    return { page };
+    const query_page = groq`*[_type == "page" && slug.current == "${params.slug}"][0]{..., sectionItems[]->{...}}`;
+    const query_menu = groq`*[_type == "menu"][0]{...}`;
+
+    const page = await $sanity.fetch(query_page);
+    const menu = await $sanity.fetch(query_menu);
+    return { page, menu };
   },
 };
 </script>

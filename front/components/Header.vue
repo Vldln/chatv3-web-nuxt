@@ -7,10 +7,10 @@
       /></NuxtLink>
       <nav class="flex items-center">
         <ul
-          v-if="menu"
+          v-if="data"
           class="hidden sm:flex justify-end items-center mr-6 mb-0"
         >
-          <li v-for="item in menu.menuItems" :key="item._key">
+          <li v-for="item in data.menuItems" :key="item._key">
             <NuxtLink
               class="text-gray-700 uppercase mr-8"
               :to="localePath(item.linkUrl)"
@@ -24,32 +24,10 @@
 </template>
 
 <script>
-import { groq } from "@nuxtjs/sanity";
-const query = groq`*[_type == "menu"][0]{...}`;
-
 export default {
   name: "Header",
-  created() {
-    this.fetchData();
-  },
-  data() {
-    return {
-      loading: true,
-      menu: {},
-    };
-  },
-  methods: {
-    fetchData() {
-      this.error = this.menu = null;
-      this.$sanity.fetch(query).then(
-        (menu) => {
-          this.menu = menu;
-        },
-        (error) => {
-          this.error = error;
-        }
-      );
-    },
+  props: {
+    data: Object,
   },
 };
 </script>
