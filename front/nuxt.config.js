@@ -110,6 +110,9 @@ export default {
   },
 
   modules: ["@nuxtjs/i18n", "@nuxtjs/google-fonts"],
+  sanity: {
+    projectId: 'cyet60s0'
+  },
   pwa: {
     manifest: {
       name: "Chatv3",
@@ -182,7 +185,7 @@ export default {
   css: ["@/assets/style.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/sanity-block.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -192,8 +195,13 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/pwa",
+    "@nuxtjs/sanity/module"
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  runtimeConfig: {
+    sanity: {
+      token: process.env.NUXT_SANITY_TOKEN,
+    },
+  },
 };

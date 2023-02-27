@@ -2,13 +2,28 @@
 <template>
   <div class="py-6 sm:py-20">
     <div class="container px-3 sm:px-0 sm:text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold md:mx-[100px]">
-        {{ $t("title.first") }}
-        <span class="text-primary">{{ $t("title.second") }}</span>
+      <h1
+        class="text-4xl sm:text-5xl font-bold md:mx-[100px]"
+        v-for="item in heroTitle"
+        :key="item._key"
+      >
+        <span
+          v-for="section in item.children"
+          :key="section._key"
+          :class="[section.marks[0] == 'strong' ? 'text-primary' : '']"
+        >
+          {{ section.text }}
+        </span>
       </h1>
-      <p class="text-xl my-8 text-gray-500 md:mx-[120px]">
-        {{ $t("subtitle") }}
-      </p>
+      <div
+        class="text-xl my-8 text-gray-500 md:mx-[120px]"
+        v-for="item in heroText.items"
+        :key="item._key"
+      >
+        <p v-for="section in item.children" :key="section._key">
+          {{ section.text }}
+        </p>
+      </div>
       <!-- <span
         class="
           border border-green-500
@@ -62,6 +77,11 @@
 export default {
   nuxtI18n: {
     locales: ["ua", "ru", "en"],
+  },
+  props: {
+    heroText: String,
+    title: String,
+    heroTitle: String,
   },
   name: "Hero",
   computed: {

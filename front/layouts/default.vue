@@ -2,7 +2,8 @@
 
 <template>
   <div class="bg-gray-50 wrapper layers flex flex-col">
-    <Header />
+    <Header :data="menu" />
+    {{ menu }}
     <main>
       <Nuxt />
     </main>
@@ -10,11 +11,7 @@
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {};
-  },
-};
+export default {};
 </script>
 <style>
 html {

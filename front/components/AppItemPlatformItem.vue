@@ -9,6 +9,29 @@
     <div class="mb-5 text-sm font-semibold uppercase text-gray-600" v-else>
       {{ $t("items.mobileApp") }}
     </div>
+    <div v-for="item in data" :key="item._key" class="flex items-center mb-3">
+      <span class="block sm:inline mr-3 text-sm min-w-[90px] sm:text-right"
+        >{{ item.linkBlockTitle }}
+      </span>
+      <ButtonGroups>
+        <Button v-for="itemDocs in item.linkItems" :key="itemDocs._key">
+          <NuxtLink
+            class="text-gray-700"
+            :to="itemDocs.linkUrl"
+            v-if="itemDocs.internalLink"
+            >{{ itemDocs.linkLabel }}</NuxtLink
+          >
+          <a
+            v-else
+            class="text-gray-700"
+            :href="itemDocs.linkUrl"
+            target="_blank"
+          >
+            {{ itemDocs.linkLabel }}
+          </a>
+        </Button>
+      </ButtonGroups>
+    </div>
     <div class="sm:pr-6">
       <div class="mb-3 flex items-center">
         <span
@@ -29,21 +52,7 @@
           <ButtonGroups>
             <div
               id="adresServer"
-              class="
-                px-1
-                min-h-[30px]
-                inline-block
-                text-xs
-                border border-gray-300
-                bg-white
-                py-1
-                shadow-sm
-                rounded
-                text-primary
-                underline
-                text-center
-                focus:outline-none
-              "
+              class="px-1 min-h-[30px] inline-block text-xs border border-gray-300 bg-white py-1 shadow-sm rounded text-primary underline text-center focus:outline-none"
             >
               {{ `${data.linkSubdomain}.${server}.${domain}` }}
             </div>
@@ -154,16 +163,7 @@
       {{ $t("items.mobileApp") }}
     </div>
     <div
-      class="
-        bg-gray-50
-        rounded-lg
-        py-8
-        px-5
-        w-full
-        flex
-        items-center
-        justify-center
-      "
+      class="bg-gray-50 rounded-lg py-8 px-5 w-full flex items-center justify-center"
       style="flex-basis: 100%"
     >
       <img

@@ -1,40 +1,33 @@
 <template>
   <main class="container px-3 sm:px-0">
-    <Hero />
-    <div>
-      <SectionTitle>
-        <template v-slot:icon>
-          <img class="w-16" src="/icons/chating.svg" alt="" />
-        </template>
-        <template>
-          {{ $t("rubric.messaging") }}
-        </template>
-      </SectionTitle>
-      <div v-for="item in messaging" :key="item.id">
-        <AppItem :data="item" />
-      </div>
-
-      <SectionTitle>
-        <template v-slot:icon>
-          <img class="w-16" src="/icons/browsing.svg" alt="" />
-        </template>
-        <template>
-          {{ $t("rubric.browsing") }}
-        </template>
-      </SectionTitle>
-      <div v-for="item in browsing" :key="item.id">
-        <AppItem :data="item" />
-      </div>
-      <SectionTitle>
-        <template v-slot:icon>
-          <img class="w-16" src="/icons/social.svg" alt="" />
-        </template>
-        <template>
-          {{ $t("rubric.social") }}
-        </template>
-      </SectionTitle>
-      <div v-for="item in social" :key="item.id">
-        <AppItem :data="item" />
+    <Meta></Meta>
+    <Hero
+      :title="page.title"
+      :heroTitle="page.heroTitle"
+      :heroText="page.heroText"
+    />
+    <div v-if="page.sectionItems">
+      <div v-for="item in page.sectionItems" :key="item._key">
+        <SectionTitle>
+          <template v-slot:icon>
+            <SanityImage
+              :asset-id="item.icon.asset._ref"
+              auto="format"
+              w="40"
+              h="40"
+            >
+              <template #default="{ src }">
+                <img :src="src" width="40" />
+              </template>
+            </SanityImage>
+          </template>
+          <template>
+            {{ item.sectionName }}
+          </template>
+        </SectionTitle>
+        <div v-for="service in item.sectionItem" :key="service._key">
+          <AppItem :data="service" />
+        </div>
       </div>
     </div>
     <ReplicateSection />
@@ -42,12 +35,19 @@
 </template>
 
 <script>
+import { groq } from "@nuxtjs/sanity";
+// Import the component if not already added globally
+
+// Import any components to be used as serializers
 export default {
   layout: "default",
-  nuxtI18n: {
-    locales: ["ua", "ru", "en"],
-  },
   name: "IndexPage",
+  async asyncData({ params, $sanity }) {
+    const query = groq`*[_type == "page" && slug.current == "main"][0]{...,  sectionItems[]->}`;
+    const page = await $sanity.fetch(query);
+    return { page };
+  },
+
   head() {
     return {
       meta: [
@@ -78,23 +78,6 @@ export default {
         // },
       ],
     };
-  },
-  computed: {
-    messaging() {
-      return this.$store.state.items.messaging.filter((item) => {
-        return item.show === true;
-      });
-    },
-    browsing() {
-      return this.$store.state.items.browsing.filter((item) => {
-        return item.show === true;
-      });
-    },
-    social() {
-      return this.$store.state.items.social.filter((item) => {
-        return item.show === true;
-      });
-    },
   },
 };
 </script>
