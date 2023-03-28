@@ -2,7 +2,7 @@
   <div class="sm:mx-0" v-if="data">
     <div
       class="mb-5 text-sm font-semibold uppercase text-gray-600"
-      v-if="desktop"
+      v-if="!desktop"
     >
       {{ $t("items.desktopApp") }}
     </div>
@@ -179,27 +179,24 @@
 import copy from "~/mixins/copy.js";
 
 export default {
-  nuxtI18n: {
-    locales: ["ua", "ru", "en"],
-  },
   name: "AppItemPlatformItem",
-  props: { data: Object, desktop: Boolean },
+  props: { data: Array, desktop: Boolean },
   mixins: [copy],
   data() {
     return {
-      domain: this.$store.state.rootDomain,
+      // domain: 'this.$store.state.rootDomain',
     };
   },
   computed: {
-    server() {
-      if (this.$t(`cities`)[`${window.location.host.split(".")[0]}`]) {
-        return window.location.host.split(".")[1]
-          ? window.location.host.split(".")[0]
-          : "kyiv";
-      } else {
-        return "kyiv";
-      }
-    },
+    // server() {
+    //   if (this.$t(`cities`)[`${window.location.host.split(".")[0]}`]) {
+    //     return window.location.host.split(".")[1]
+    //       ? window.location.host.split(".")[0]
+    //       : "kyiv";
+    //   } else {
+    //     return "kyiv";
+    //   }
+    // },
     item() {
       if (this.data.servers) {
         return this.data.servers.filter((item) => {

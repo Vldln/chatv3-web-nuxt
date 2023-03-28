@@ -79,9 +79,8 @@ export default {
     locales: ["ua", "ru", "en"],
   },
   props: {
-    heroText: String,
-    title: String,
-    heroTitle: String,
+    heroText: Object,
+    heroTitle: Array,
   },
   name: "Hero",
   computed: {
